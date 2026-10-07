@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>JNKWatch</title>
+  <meta name="description" content="JNKWatch — a hackable open-source round smartwatch. LVGL v9 UI on an ESP32-S3 AMOLED, a PC emulator, and an Android companion app. Apache-2.0." />
+  <meta name="color-scheme" content="light" />
+
+  <!-- Open Graph / social -->
+  <meta property="og:title" content="JNKWatch — a hackable open-source smartwatch" />
+  <meta property="og:description" content="LVGL v9 UI on an ESP32-S3 AMOLED, a PC emulator, and an Android companion app. Apache-2.0." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/img/clock.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav" id="nav">
+    <div class="wrap nav__inner">
+      <a class="brand" href="#top" aria-label="JNKWatch home">
+        <span class="brand__mark" aria-hidden="true"></span>
+        <span class="brand__name">JNKWatch</span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="#features">Features</a>
+        <a href="#faces">Faces</a>
+        <a href="#hardware">Hardware</a>
+        <a href="#companion">Companion</a>
+        <a href="#developers">Developers</a>
+        <a href="#get" class="nav__cta">Get it</a>
+        <a href="https://github.com/jnkwatch/watch" class="btn btn--ghost btn--sm" target="_blank" rel="noopener">GitHub ↗</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="wrap hero__grid">
+        <div class="hero__copy reveal">
+          <p class="eyebrow">Open-source smartwatch · LVGL · ESP32-S3</p>
+          <h1 class="hero__title">A watch you can<br /><span class="grad">actually hack.</span></h1>
+          <p class="hero__lead">
+            JNKWatch is a round smartwatch built in the open — a platform-independent
+            <strong>LVGL&nbsp;v9</strong> interface that runs on a desktop emulator and on a
+            466×466 AMOLED ESP32-S3, paired with an Android companion app.
+          </p>
+          <div class="hero__cta">
+            <a href="https://github.com/jnkwatch/watch" class="btn btn--primary" target="_blank" rel="noopener">View on GitHub</a>
+            <a href="#get" class="btn btn--ghost">Get started</a>
+          </div>
+          <p class="hero__status">
+            <span class="dot"></span> Apache-2.0 · Emulator complete — on-device drivers are the next milestone
+          </p>
+        </div>
+
+        <div class="hero__device reveal">
+          <div class="device" role="img" aria-label="Round AMOLED watch showing a live clock face">
+            <div class="device__bezel">
+              <div class="device__screen">
+                <!-- Live clock, drawn with CSS/SVG + JS -->
+                <div class="liveface" id="liveface">
+                  <div class="liveface__time"><span id="lfTime">00:00</span><small id="lfSec">00</small></div>
+                  <div class="liveface__meta">
+                    <span id="lfDate">—</span>
+                    <span class="liveface__row"><i class="pill">68%</i><i class="pill">14°</i></span>
+                    <span class="liveface__row"><i class="pill pill--accent">6 240 steps</i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <span class="device__crown" aria-hidden="true"></span>
+          </div>
+          <p class="device__caption">Live preview · real renders below</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STATS STRIP ===== -->
+    <section class="stats" aria-label="At a glance">
+      <div class="wrap stats__grid">
+        <div class="stat reveal"><b>466×466</b><span>AMOLED</span></div>
+        <div class="stat reveal"><b>LVGL v9</b><span>UI toolkit</span></div>
+        <div class="stat reveal"><b>8</b><span>watch faces</span></div>
+        <div class="stat reveal"><b>6</b><span>accent teintes</span></div>
+        <div class="stat reveal"><b>Apache-2.0</b><span>licensed</span></div>
+      </div>
+    </section>
+
+    <!-- ===== FEATURES ===== -->
+    <section id="features" class="section">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow">Features</p>
+          <h2>Everything on your wrist, nothing locked down.</h2>
+          <p class="section__lead">A swipeable deck of faces and apps, a motion-reactive aura, and a
+            fully customizable action grid that talks to your phone over BLE.</p>
+        </header>
+
+        <div class="cards">
+          <article class="card reveal">
+            <div class="card__icon">⤬</div>
+            <h3>Swipeable faces</h3>
+            <p>Faces and apps live in an <code>lv_tileview</code> — swipe horizontally between
+              them, swipe vertically to flip Clock ⇄ Aura and Apps ⇄ Level.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">◷</div>
+            <h3>Dual-display clock</h3>
+            <p>A Casio-style face: a big LCD time next to a status column with date, battery,
+              weather, activity and an unread-notification bell.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">✺</div>
+            <h3>“Aura” motion field</h3>
+            <p>A particle watchface driven by the IMU — calm cyan at rest, vivid magenta the
+              moment you move.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">▦</div>
+            <h3>2×3 action grid</h3>
+            <p>Six customizable buttons. Each tap fires a BLE event your phone turns into an
+              HTTP&nbsp;POST webhook — control anything.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">◉</div>
+            <h3>Notifications</h3>
+            <p>Phone notifications, SMS and calls forwarded to a card on the watch, with an
+              unread bell and tap-to-dismiss.</p>
+          </article>
+          <article class="card reveal">
+            <div class="card__icon">◐</div>
+            <h3>Six accent teintes</h3>
+            <p>Recolor the whole UI in a tap — Rose, Vert, Cyan, Violet, Or or Bleu.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FACES SHOWCASE ===== -->
+    <section id="faces" class="section section--tint">
+      <div class="wrap faces__grid">
+        <figure class="faces__shot reveal">
+          <img src="assets/img/faces.png" alt="Eight JNKWatch faces rendered on round dials" loading="lazy" />
+          <figcaption>Rendered on the PC emulator — the exact same UI source that runs on-device.</figcaption>
+        </figure>
+
+        <div class="faces__list reveal">
+          <p class="eyebrow">The deck</p>
+          <h2>Eight faces &amp; apps, one swipe apart.</h2>
+          <ul class="facelist">
+            <li><b>Actions</b><span>2×3 shortcut grid firing BLE signals</span></li>
+            <li><b>Notifications</b><span>Latest card, unread bell, tap to clear</span></li>
+            <li><b>Clock</b><span>Dual-display Casio time + status column</span></li>
+            <li><b>Aura</b><span>Motion-reactive particle field</span></li>
+            <li><b>Settings</b><span>Brightness, wrist-wake, accent teintes</span></li>
+            <li><b>Steps</b><span>Progress ring to a daily goal, green at target</span></li>
+            <li><b>Level</b><span>Spirit/bubble level from the accelerometer</span></li>
+            <li><b>Probes</b><span>Live server values pushed from your phone</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== HARDWARE ===== -->
+    <section id="hardware" class="section">
+      <div class="wrap hw__grid">
+        <div class="hw__intro reveal">
+          <p class="eyebrow">Hardware</p>
+          <h2>Built for the Waveshare ESP32-S3 Touch AMOLED 1.43″.</h2>
+          <p class="section__lead">An off-the-shelf round dev board — no custom PCB required to
+            start hacking. Every driver and pinout is documented in the repo.</p>
+          <figure class="hw__photo">
+            <img src="assets/img/frame.png" alt="JNKWatch action grid rendered on a round AMOLED dial" loading="lazy" />
+          </figure>
+        </div>
+
+        <dl class="specs reveal">
+          <div><dt>MCU</dt><dd>ESP32-S3R8 · dual LX7 @ 240 MHz</dd></div>
+          <div><dt>Memory</dt><dd>16 MB flash · 8 MB PSRAM</dd></div>
+          <div><dt>Display</dt><dd>1.43″ round AMOLED 466×466 · SH8601 QSPI</dd></div>
+          <div><dt>Touch</dt><dd>FT3168 capacitive (I²C)</dd></div>
+          <div><dt>Motion</dt><dd>QMI8658 6-axis IMU</dd></div>
+          <div><dt>Clock</dt><dd>PCF85063 RTC</dd></div>
+          <div><dt>Power</dt><dd>3.7 V Li-ion · light-sleep + watch-only mode</dd></div>
+          <div><dt>Wireless</dt><dd>Bluetooth LE (NimBLE)</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ===== COMPANION ===== -->
+    <section id="companion" class="section section--tint">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow">Android companion</p>
+          <h2>Your phone does the heavy lifting.</h2>
+          <p class="section__lead">A Kotlin / Jetpack Compose app connects over BLE and feeds the
+            watch everything it needs — built around a documented GATT protocol.</p>
+        </header>
+
+        <div class="cards cards--3">
+          <article class="card reveal"><div class="card__icon">🔔</div><h3>Notifications relay</h3><p>Forwards app notifications, SMS and incoming calls straight to the watch.</p></article>
+          <article class="card reveal"><div class="card__icon">⛅</div><h3>Weather</h3><p>Pulls local conditions from Open-Meteo and syncs temp &amp; condition.</p></article>
+          <article class="card reveal"><div class="card__icon">🔗</div><h3>Action webhooks</h3><p>Maps each of the six action buttons to a configurable HTTP POST with your own body &amp; headers.</p></article>
+          <article class="card reveal"><div class="card__icon">📡</div><h3>Server probes</h3><p>Polls GET endpoints on a schedule and pushes the values to the watch’s Probes face.</p></article>
+          <article class="card reveal"><div class="card__icon">🕑</div><h3>Time &amp; settings sync</h3><p>Keeps the RTC and your preferences mirrored between phone and watch.</p></article>
+          <article class="card reveal"><div class="card__icon">📖</div><h3>Open protocol</h3><p>Every characteristic is specified in <a href="https://github.com/jnkwatch/watch/blob/main/docs/ble-protocol.md" target="_blank" rel="noopener">docs/ble-protocol.md</a> — build your own client.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== DEVELOPERS ===== -->
+    <section id="developers" class="section">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow">Under the hood</p>
+          <h2>Designed to be developed on a laptop.</h2>
+        </header>
+
+        <div class="cards cards--2">
+          <article class="card card--wide reveal">
+            <h3>Platform-independent UI</h3>
+            <p>The entire watchface is plain LVGL with a thin driver layer. The <em>same</em> UI
+              source compiles for the PC emulator and for the device — only the HAL changes. Build
+              it, screenshot it, and unit-test it before any hardware is on your desk.</p>
+          </article>
+          <article class="card card--wide reveal">
+            <h3>Emulator + headless renders</h3>
+            <p><code>watch_sim</code> opens an SDL2 window; a headless target emits PNGs (the images
+              on this page). Core logic lives in pure, LVGL-free C modules.</p>
+          </article>
+          <article class="card card--wide reveal">
+            <h3>Test-driven</h3>
+            <p>15 Unity test suites cover the logic modules — pedometer, steps, timer, settings,
+              notifications, probes, level math and more — run via <code>./test.sh</code>.</p>
+          </article>
+          <article class="card card--wide reveal">
+            <h3>Power-aware</h3>
+            <p>Screen-off standby, <code>esp_pm</code> light-sleep, low-power BLE and an ultra-low
+              “watch-only” mode that keeps the clock alive with the radio off.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== GET IT ===== -->
+    <section id="get" class="section section--tint">
+      <div class="wrap get__grid">
+        <div class="reveal">
+          <p class="eyebrow">Quick start</p>
+          <h2>Run it in three commands.</h2>
+          <p class="section__lead">No hardware needed to try the UI — the emulator builds on any
+            desktop. Flashing a device uses ESP-IDF&nbsp;5.3+.</p>
+          <div class="get__cta">
+            <a href="https://github.com/jnkwatch/watch" class="btn btn--primary" target="_blank" rel="noopener">Clone the repo</a>
+            <a href="https://github.com/jnkwatch/watch/releases/latest" class="btn btn--ghost" target="_blank" rel="noopener">Download Android APK</a>
+          </div>
+        </div>
+
+        <pre class="code reveal" aria-label="Quick start commands"><code><span class="c-c"># 1 · get the source</span>
+git clone https://github.com/jnkwatch/watch
+cd watch
+
+<span class="c-c"># 2 · build &amp; run the emulator</span>
+./build.sh
+./watch_sim
+
+<span class="c-c"># 3 · flash a device (ESP-IDF 5.3+)</span>
+idf.py -C firmware flash monitor</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="wrap footer__grid">
+      <div class="footer__brand">
+        <a class="brand" href="#top">
+          <span class="brand__mark" aria-hidden="true"></span>
+          <span class="brand__name">JNKWatch</span>
+        </a>
+        <p>An open-source round smartwatch. Firmware, emulator &amp; companion app.</p>
+      </div>
+      <nav class="footer__col" aria-label="Project">
+        <h4>Project</h4>
+        <a href="https://github.com/jnkwatch/watch" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/jnkwatch/watch/blob/main/README.md" target="_blank" rel="noopener">README</a>
+        <a href="https://github.com/jnkwatch/watch/releases/latest" target="_blank" rel="noopener">Android APK</a>
+      </nav>
+      <nav class="footer__col" aria-label="Docs">
+        <h4>Docs</h4>
+        <a href="https://github.com/jnkwatch/watch/blob/main/docs/ble-protocol.md" target="_blank" rel="noopener">BLE protocol</a>
+        <a href="https://github.com/jnkwatch/watch/blob/main/docs/hardware/ESP32-S3-Touch-AMOLED-1.43.md" target="_blank" rel="noopener">Hardware</a>
+      </nav>
+      <div class="footer__col">
+        <h4>License</h4>
+        <p class="footer__muted">Apache-2.0 · © <span id="year">2026</span> jnkwatch</p>
+        <p class="footer__muted footer__credits">Built with LVGL (MIT), Unity (MIT) &amp; Montserrat (OFL).</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

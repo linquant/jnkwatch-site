@@ -1,0 +1,11 @@
+# OS / editor cruft
+.DS_Store
+*.swp
+.idea/
+.vscode/
+
+# Local tooling
+node_modules/
+.cache/
+
+# NOTE: site images under assets/img/*.png ARE tracked on purpose.
