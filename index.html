@@ -50,7 +50,7 @@
         <a href="#companion">Companion</a>
         <a href="#developers">Developers</a>
         <a href="#get" class="nav__cta">Get it</a>
-        <a href="https://gitlab.com/johann.nowacki/jnkwatch" class="btn btn--ghost btn--sm" target="_blank" rel="noopener">GitLab ↗</a>
+        <a href="https://github.com/linquant/jnkwatch" class="btn btn--ghost btn--sm" target="_blank" rel="noopener">GitHub ↗</a>
       </nav>
 
       <button class="nav__toggle" id="navToggle" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
@@ -73,11 +73,11 @@
             466×466 AMOLED ESP32-S3, paired with an Android companion app.
           </p>
           <div class="hero__cta">
-            <a href="https://gitlab.com/johann.nowacki/jnkwatch" class="btn btn--primary" target="_blank" rel="noopener">View on GitLab</a>
+            <a href="https://github.com/linquant/jnkwatch" class="btn btn--primary" target="_blank" rel="noopener">View on GitHub</a>
             <a href="#get" class="btn btn--ghost">Get started</a>
           </div>
           <p class="hero__status">
-            <span class="dot"></span> Apache-2.0 · Emulator complete — on-device drivers are the next milestone
+            <span class="dot"></span> Apache-2.0 · Firmware v1.3 · emulator, on-device firmware &amp; Android companion
           </p>
         </div>
 
@@ -231,7 +231,7 @@
           <article class="card reveal"><div class="card__icon">🔗</div><h3>Action webhooks</h3><p>Maps each of the six action buttons to a configurable HTTP POST with your own body &amp; headers.</p></article>
           <article class="card reveal"><div class="card__icon">📡</div><h3>Server probes</h3><p>Polls GET endpoints on a schedule and pushes the values to the watch’s Probes face.</p></article>
           <article class="card reveal"><div class="card__icon">🕑</div><h3>Time &amp; settings sync</h3><p>Keeps the RTC and your preferences mirrored between phone and watch.</p></article>
-          <article class="card reveal"><div class="card__icon">📖</div><h3>Open protocol</h3><p>Every characteristic is specified in <a href="https://gitlab.com/johann.nowacki/jnkwatch/-/blob/main/docs/ble-protocol.md" target="_blank" rel="noopener">docs/ble-protocol.md</a> — build your own client.</p></article>
+          <article class="card reveal"><div class="card__icon">📖</div><h3>Open protocol</h3><p>Every characteristic is specified in <a href="https://github.com/linquant/jnkwatch/blob/main/docs/ble-protocol.md" target="_blank" rel="noopener">docs/ble-protocol.md</a> — build your own client.</p></article>
         </div>
       </div>
     </section>
@@ -250,6 +250,8 @@
             <p>The entire watchface is plain LVGL with a thin driver layer. The <em>same</em> UI
               source compiles for the PC emulator and for the device — only the HAL changes. Build
               it, screenshot it, and unit-test it before any hardware is on your desk.</p>
+            <p>Firmware + shared UI live in <code>firmware-esp32/</code>, the companion app in
+              <code>android-app/</code>, both in one repo.</p>
           </article>
           <article class="card card--wide reveal">
             <h3>Emulator + headless renders</h3>
@@ -258,7 +260,7 @@
           </article>
           <article class="card card--wide reveal">
             <h3>Test-driven</h3>
-            <p>15 Unity test suites cover the logic modules — pedometer, steps, timer, settings,
+            <p>16 Unity test suites cover the logic modules — pedometer, steps, timer, settings,
               notifications, probes, level math and more — run via <code>./test.sh</code>.</p>
           </article>
           <article class="card card--wide reveal">
@@ -279,18 +281,18 @@
           <p class="section__lead">No hardware needed to try the UI — the emulator builds on any
             desktop. Flashing a device uses ESP-IDF&nbsp;5.3+.</p>
           <div class="get__cta">
-            <a href="https://gitlab.com/johann.nowacki/jnkwatch" class="btn btn--primary" target="_blank" rel="noopener">Clone the repo</a>
-            <a href="https://gitlab.com/johann.nowacki/jnkwatch/-/releases" class="btn btn--ghost" target="_blank" rel="noopener">Download Android APK</a>
+            <a href="https://github.com/linquant/jnkwatch" class="btn btn--primary" target="_blank" rel="noopener">Clone the repo</a>
+            <a href="https://github.com/linquant/jnkwatch/releases/latest/download/jnkwatch-debug.apk" class="btn btn--ghost" target="_blank" rel="noopener">Download Android APK</a>
           </div>
         </div>
 
         <pre class="code reveal" aria-label="Quick start commands"><code><span class="c-c"># 1 · get the source</span>
-git clone https://gitlab.com/johann.nowacki/jnkwatch
-cd watch
+git clone --recursive https://github.com/linquant/jnkwatch
+cd jnkwatch/firmware-esp32
 
 <span class="c-c"># 2 · build &amp; run the emulator</span>
 ./build.sh
-./watch_sim
+./build/watch_sim
 
 <span class="c-c"># 3 · flash a device (ESP-IDF 5.3+)</span>
 idf.py -C firmware flash monitor</code></pre>
@@ -310,14 +312,14 @@ idf.py -C firmware flash monitor</code></pre>
       </div>
       <nav class="footer__col" aria-label="Project">
         <h4>Project</h4>
-        <a href="https://gitlab.com/johann.nowacki/jnkwatch" target="_blank" rel="noopener">GitLab</a>
-        <a href="https://gitlab.com/johann.nowacki/jnkwatch/-/blob/main/README.md" target="_blank" rel="noopener">README</a>
-        <a href="https://gitlab.com/johann.nowacki/jnkwatch/-/releases" target="_blank" rel="noopener">Android APK</a>
+        <a href="https://github.com/linquant/jnkwatch" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/linquant/jnkwatch/blob/main/README.md" target="_blank" rel="noopener">README</a>
+        <a href="https://github.com/linquant/jnkwatch/releases/latest/download/jnkwatch-debug.apk" target="_blank" rel="noopener">Android APK</a>
       </nav>
       <nav class="footer__col" aria-label="Docs">
         <h4>Docs</h4>
-        <a href="https://gitlab.com/johann.nowacki/jnkwatch/-/blob/main/docs/ble-protocol.md" target="_blank" rel="noopener">BLE protocol</a>
-        <a href="https://gitlab.com/johann.nowacki/jnkwatch/-/blob/main/docs/hardware/ESP32-S3-Touch-AMOLED-1.43.md" target="_blank" rel="noopener">Hardware</a>
+        <a href="https://github.com/linquant/jnkwatch/blob/main/docs/ble-protocol.md" target="_blank" rel="noopener">BLE protocol</a>
+        <a href="https://github.com/linquant/jnkwatch/blob/main/docs/hardware/ESP32-S3-Touch-AMOLED-1.43.md" target="_blank" rel="noopener">Hardware</a>
       </nav>
       <div class="footer__col">
         <h4>License</h4>

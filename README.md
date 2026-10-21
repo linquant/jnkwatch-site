@@ -21,7 +21,7 @@ assets/img/       rendered watch screenshots (swap in real photos anytime)
 cd jnkwatch-site
 python3 -m http.server      # then open http://localhost:8000
 ```
-All paths are relative, so the folder is portable — it can be served by Apache, GitLab
+All paths are relative, so the folder is portable — it can be served by Apache, GitHub
 Pages, or opened directly via `file://`.
 
 ## Deploy
